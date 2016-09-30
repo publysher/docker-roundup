@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  test_success:
+    build: roundup/
+    volumes:
+      - "./test_success:/tests"
+
+  test_failure:
+    build: roundup/
+    volumes:
+      - "./test_failure:/tests"
+
+  test_service:
+    build: test_service
+
+  test_wait:
+    build: roundup/
+    volumes:
+      - "./test_wait:/tests"
+    links:
+      - test_service:service
